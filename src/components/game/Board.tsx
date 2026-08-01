@@ -1,5 +1,5 @@
 import type { Tile as TileModel } from "@/lib/game/engine";
-import { isCovered } from "@/lib/game/engine";
+import { isCovered, BOARD_COLS, BOARD_ROWS } from "@/lib/game/engine";
 import { Tile, TILE_SIZE } from "./Tile";
 
 export function Board({
@@ -13,14 +13,14 @@ export function Board({
   onSelect: (t: TileModel) => void;
   shaking?: boolean;
 }) {
-  const width = 7 * TILE_SIZE * 0.94 + 20;
-  const height = 6 * TILE_SIZE * 0.94 + 20;
+  const width = BOARD_COLS * TILE_SIZE * 0.96 + 28;
+  const height = BOARD_ROWS * TILE_SIZE * 0.96 + 28;
 
   return (
     <div className={`flex w-full justify-center ${shaking ? "animate-shake" : ""}`}>
-      <div className="rounded-4xl glass p-4 shadow-soft">
+      <div className="rounded-4xl p-2">
         <div
-          className="relative origin-top scale-[min(1,calc((100vw-4rem)/380))] sm:scale-100"
+          className="relative origin-top scale-[min(1,calc((100vw-2.5rem)/430))] sm:scale-100"
           style={{ width, height }}
         >
           {tiles.map((t) => (

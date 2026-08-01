@@ -11,6 +11,8 @@ export type Tile = {
   chained: boolean;
 };
 
+export const BOARD_COLS = 9;
+export const BOARD_ROWS = 7;
 export const TILE_UNIT = 1; // grid step; tiles occupy 2x2 half-steps
 
 function mulberry32(seed: number) {
@@ -56,8 +58,8 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
     [bag[i], bag[j]] = [bag[j]!, bag[i]!];
   }
 
-  const cols = 7;
-  const rows = 6;
+  const cols = BOARD_COLS;
+  const rows = BOARD_ROWS;
   const layers: { x: number; y: number; z: number }[][] = [];
   for (let z = 0; z < level.layers; z++) {
     const inset = z * 0.5;
@@ -131,9 +133,9 @@ export function boardBounds(tiles: Tile[]) {
   const ys = tiles.map((t) => t.y);
   return {
     minX: Math.min(0, ...xs),
-    maxX: Math.max(6, ...xs),
+    maxX: Math.max(BOARD_COLS - 1, ...xs),
     minY: Math.min(0, ...ys),
-    maxY: Math.max(5, ...ys),
+    maxY: Math.max(BOARD_ROWS - 1, ...ys),
   };
 }
 
