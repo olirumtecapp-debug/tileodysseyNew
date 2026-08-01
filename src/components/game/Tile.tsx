@@ -7,12 +7,13 @@ export const TILE_SIZE = 46;
 
 // Soft pastel plate colours per symbol category — mirrors the glossy
 // candy-tile look of premium match-3 titles.
-const PLATE: Record<string, [string, string]> = {
-  Frutas: ["#fffdf6", "#ffe9c9"],
-  Flores: ["#fffafd", "#ffd9ec"],
-  Gemas: ["#f6fbff", "#cfe8ff"],
-  Tesouros: ["#fffbee", "#ffe6a8"],
-  Criaturas: ["#f6fff8", "#cdf1d8"],
+const PLATE: Record<string, [string, string, string]> = {
+  //           face top    face bottom  frame (saturated)
+  Frutas: ["#fffdf3", "#ffe3b0", "#f4903a"],
+  Flores: ["#fff8fc", "#ffc9e4", "#e8559b"],
+  Gemas: ["#f4fbff", "#b9dcff", "#3d8fe0"],
+  Tesouros: ["#fffaea", "#ffd982", "#e0a51f"],
+  Criaturas: ["#f4fff8", "#b9ecd0", "#2fae72"],
 };
 
 export const Tile = memo(function Tile({
@@ -28,7 +29,7 @@ export const Tile = memo(function Tile({
 }) {
   const sym = symbolById(tile.symbolId);
   const locked = covered || tile.frozen || tile.chained;
-  const [c1, c2] = PLATE[sym.category] ?? ["#fffdf6", "#ffe9c9"];
+  const [c1, c2, frame] = PLATE[sym.category] ?? ["#fffdf3", "#ffe3b0", "#f4903a"];
 
   return (
     <button
@@ -37,7 +38,7 @@ export const Tile = memo(function Tile({
       disabled={locked}
       onClick={() => onSelect(tile)}
       className={cn(
-        "absolute rounded-[30%] p-[3px] transition-transform duration-150",
+        "absolute rounded-[30%] p-[4px] transition-transform duration-150",
         "animate-pop-in",
         locked
           ? "cursor-not-allowed brightness-[.72] saturate-[.55]"
@@ -49,8 +50,8 @@ export const Tile = memo(function Tile({
         left: tile.x * (TILE_SIZE * 0.96) + tile.z * 5,
         top: tile.y * (TILE_SIZE * 0.96) - tile.z * 5,
         zIndex: 10 + tile.z * 10,
-        background: "linear-gradient(180deg,#ffffff 0%,#e6e1d6 62%,#c8c1b2 100%)",
-        boxShadow: `0 ${3 + tile.z}px 0 rgba(120,110,95,.55), 0 ${5 + tile.z}px ${9 + tile.z * 3}px rgba(24,40,60,.32)`,
+        background: `linear-gradient(180deg,#ffffff 0%, ${frame}cc 55%, ${frame} 100%)`,
+        boxShadow: `0 ${4 + tile.z}px 0 rgba(0,0,0,.28), 0 ${6 + tile.z}px ${12 + tile.z * 3}px rgba(16,38,64,.35), inset 0 1px 0 rgba(255,255,255,.9)`,
       }}
     >
       {/* inner glossy plate */}

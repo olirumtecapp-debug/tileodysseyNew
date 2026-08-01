@@ -39,6 +39,10 @@ export function Scenery({ sky, ground, accent }: Props) {
         </div>
       ))}
 
+      {/* sun */}
+      <div className="absolute right-[12%] top-[6%] h-24 w-24 rounded-full bg-[#fff2a8] blur-[2px] opacity-80" />
+      <div className="absolute right-[12%] top-[6%] h-24 w-24 rounded-full bg-[#fffbe0]/70 blur-2xl" />
+
       {/* snowy peaks + lake + hills */}
       <svg
         className="absolute inset-x-0 bottom-0 h-[58vh] w-full"
@@ -59,7 +63,7 @@ export function Scenery({ sky, ground, accent }: Props) {
           <path d="M1065 163 L1120 110 L1175 163 L1148 152 L1120 168 L1092 152 Z" />
         </g>
         {/* lake */}
-        <path d="M0 320 Q360 292 720 320 T1440 312 L1440 420 L0 420 Z" fill="#8fd3f4" opacity=".85" />
+        <path d="M0 320 Q360 292 720 320 T1440 312 L1440 420 L0 420 Z" fill="#37b7f0" opacity=".9" />
         <g fill="#ffffff" opacity=".5">
           <rect x="180" y="342" width="140" height="6" rx="3" />
           <rect x="640" y="366" width="200" height="6" rx="3" />
@@ -67,6 +71,7 @@ export function Scenery({ sky, ground, accent }: Props) {
         </g>
         {/* hills */}
         <path d="M0 400 Q380 340 760 400 T1440 388 L1440 620 L0 620 Z" fill={ground} />
+        <path d="M0 400 Q380 340 760 400 T1440 388 L1440 430 L0 442 Z" fill="#ffffff" opacity=".2" />
         <path
           d="M0 462 Q380 412 760 462 T1440 452 L1440 620 L0 620 Z"
           fill={ground}
