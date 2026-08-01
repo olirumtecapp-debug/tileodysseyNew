@@ -211,7 +211,7 @@ export function buildLevel(worldId: string, index: number): LevelConfig | null {
   const worldOrder = WORLDS.findIndex((w) => w.id === worldId);
   const difficulty = worldOrder * world.levels + index;
   const kinds = Math.min(world.pool.length, 4 + Math.floor(index / 3));
-  const triples = Math.min(24, 8 + Math.floor(difficulty / 3));
+  const triples = Math.min(44, 16 + Math.floor(difficulty / 2));
   const tpl = OBJECTIVE_TEMPLATES[index % OBJECTIVE_TEMPLATES.length]!;
   const targetSymbol = world.pool[index % kinds]!;
   const objective = tpl(targetSymbol);
@@ -221,7 +221,7 @@ export function buildLevel(worldId: string, index: number): LevelConfig | null {
     id: `${worldId}-${index}`,
     triples,
     kinds,
-    layers: Math.min(4, 2 + Math.floor(index / 4)),
+    layers: Math.min(5, 3 + Math.floor(index / 4)),
     moveGoal: Math.round(triples * 1.6),
     timeGoal: 45 + triples * 6,
     objective:
