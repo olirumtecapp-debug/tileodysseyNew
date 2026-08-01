@@ -34,6 +34,54 @@ function hashSeed(s: string) {
   return h >>> 0;
 }
 
+/** Board silhouettes — u/v are normalised (-1..1) coordinates inside a layer. */
+export type BoardShape =
+  | "full"
+  | "pyramid"
+  | "heart"
+  | "diamond"
+  | "ring"
+  | "cross"
+  | "hourglass"
+  | "tower"
+  | "butterfly";
+
+type Mask = (u: number, v: number, z: number, layers: number) => boolean;
+
+export const SHAPES: Record<BoardShape, Mask> = {
+  full: () => true,
+  pyramid: (u, v) => Math.abs(u) <= (v + 1) / 2 + 0.12,
+  heart: (u, v) => {
+    const x = u * 1.15;
+    const y = -v * 1.1;
+    const a = x * x + y * y - 0.62;
+    return a * a * a - x * x * y * y * y <= 0.02;
+  },
+  diamond: (u, v) => Math.abs(u) + Math.abs(v) <= 1.05,
+  ring: (u, v) => Math.max(Math.abs(u), Math.abs(v)) >= 0.42,
+  cross: (u, v) => Math.abs(u) <= 0.38 || Math.abs(v) <= 0.38,
+  hourglass: (u, v) => Math.abs(u) <= Math.abs(v) * 0.9 + 0.28,
+  tower: (u, v) => Math.abs(u) <= 0.55 || v >= 0.45,
+  butterfly: (u, v) => Math.abs(u) >= 0.18 * (1 - Math.abs(v)) && Math.abs(u) + Math.abs(v) * 0.6 <= 1.1,
+};
+
+const SHAPE_ORDER: BoardShape[] = [
+  "pyramid",
+  "heart",
+  "full",
+  "diamond",
+  "cross",
+  "ring",
+  "hourglass",
+  "butterfly",
+  "tower",
+];
+
+export function shapeForLevel(level: LevelConfig): BoardShape {
+  const worldOrder = Math.abs(hashSeed(level.worldId)) % SHAPE_ORDER.length;
+  return SHAPE_ORDER[(worldOrder + level.index) % SHAPE_ORDER.length]!;
+}
+
 export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
   const world = worldById(level.worldId)!;
   const rand = mulberry32(hashSeed(level.id) + salt * 7919);
