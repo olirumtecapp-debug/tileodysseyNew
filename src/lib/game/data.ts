@@ -212,8 +212,8 @@ export function buildLevel(worldId: string, index: number): LevelConfig | null {
   const difficulty = worldOrder * world.levels + index;
   const kinds = Math.min(world.pool.length, 4 + Math.floor(index / 3));
   const triples = Math.min(24, 8 + Math.floor(difficulty / 3));
-  const tpl = OBJECTIVE_TEMPLATES[index % OBJECTIVE_TEMPLATES.length];
-  const targetSymbol = world.pool[index % kinds];
+  const tpl = OBJECTIVE_TEMPLATES[index % OBJECTIVE_TEMPLATES.length]!;
+  const targetSymbol = world.pool[index % kinds]!;
   const objective = tpl(targetSymbol);
   return {
     worldId,
@@ -229,7 +229,7 @@ export function buildLevel(worldId: string, index: number): LevelConfig | null {
         ? {
             ...objective,
             amount: Math.min(objective.amount!, triples),
-            label: `${objective.label} ${Math.min(objective.amount!, triples)}× ${symbolById(targetSymbol).glyph}`,
+            label: `${objective.label} ${Math.min(objective.amount!, triples)}× ${symbolById(targetSymbol!).glyph}`,
           }
         : { ...objective, label: "Limpe todo o tabuleiro" },
     obstacles: {

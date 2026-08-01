@@ -46,14 +46,14 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
     for (let i = 0; i < need; i++) bag.push(target, target, target);
   }
   while (bag.length < total) {
-    const s = pool[Math.floor(rand() * pool.length)];
+    const s = pool[Math.floor(rand() * pool.length)]!;
     bag.push(s, s, s);
   }
   bag.length = total;
   // shuffle
   for (let i = bag.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
-    [bag[i], bag[j]] = [bag[j], bag[i]];
+    [bag[i], bag[j]] = [bag[j]!, bag[i]!];
   }
 
   const cols = 7;
@@ -82,7 +82,7 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
   }
   let i = 0;
   while (chosen.length < total && i < slots.length) {
-    if (!chosen.includes(slots[i])) chosen.push(slots[i]);
+    if (!chosen.includes(slots[i]!)) chosen.push(slots[i]!);
     i++;
   }
 
@@ -97,7 +97,7 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
 
   return chosen.slice(0, total).map((s, idx) => ({
     uid: idx + 1,
-    symbolId: bag[idx],
+    symbolId: bag[idx]!,
     x: s.x,
     y: s.y,
     z: s.z,
