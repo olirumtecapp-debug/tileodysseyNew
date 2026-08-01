@@ -60,6 +60,10 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
 
   const cols = BOARD_COLS;
   const rows = BOARD_ROWS;
+
+  const shape = shapeForLevel(level);
+  const mask = SHAPES[shape]!;
+
   const layers: { x: number; y: number; z: number }[][] = [];
   for (let z = 0; z < level.layers; z++) {
     const inset = z * 0.5;
@@ -67,7 +71,12 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
     const lr = rows - z;
     const layer: { x: number; y: number; z: number }[] = [];
     for (let r = 0; r < lr; r++) {
-      for (let c = 0; c < lc; c++) layer.push({ x: c + inset, y: r + inset, z });
+      for (let c = 0; c < lc; c++) {
+        const u = lc > 1 ? (c / (lc - 1)) * 2 - 1 : 0;
+        const v = lr > 1 ? (r / (lr - 1)) * 2 - 1 : 0;
+        if (!mask(u, v, z, level.layers)) continue;
+        layer.push({ x: c + inset, y: r + inset, z });
+      }
     }
     // centre-out so partially filled layers stay compact
     const cx = (lc - 1) / 2 + inset;
@@ -78,23 +87,28 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
     layers.push(layer);
   }
 
-  // Spread tiles across layers proportionally so the stack looks like a pyramid.
+  // Shapes have fewer slots than a full rectangle — trim the tile count to a
+  // multiple of three that actually fits inside the silhouette.
   const slotTotal = layers.reduce((a, l) => a + l.length, 0);
+  const fit = Math.min(total, Math.floor(slotTotal / 3) * 3);
+  bag.length = fit;
+
   const chosen: { x: number; y: number; z: number }[] = [];
   layers.forEach((layer, i) => {
     const quota =
       i === layers.length - 1
-        ? total - chosen.length
-        : Math.min(layer.length, Math.round((total * layer.length) / slotTotal));
+        ? fit - chosen.length
+        : Math.min(layer.length, Math.round((fit * layer.length) / slotTotal));
     chosen.push(...layer.slice(0, Math.max(0, quota)));
   });
   // top-up from the base if rounding left us short
   for (const layer of layers) {
     for (const slot of layer) {
-      if (chosen.length >= total) break;
+      if (chosen.length >= fit) break;
       if (!chosen.includes(slot)) chosen.push(slot);
     }
   }
+
 
 
 
