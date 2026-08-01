@@ -58,33 +58,34 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
 
   const cols = 7;
   const rows = 6;
-  const slots: { x: number; y: number; z: number }[] = [];
+  const layers: { x: number; y: number; z: number }[][] = [];
   for (let z = 0; z < level.layers; z++) {
     const inset = z * 0.5;
-    for (let r = 0; r < rows - z; r++) {
-      for (let c = 0; c < cols - z; c++) {
-        slots.push({ x: c + inset, y: r + inset, z });
-      }
+    const lc = cols - z;
+    const lr = rows - z;
+    const layer: { x: number; y: number; z: number }[] = [];
+    for (let r = 0; r < lr; r++) {
+      for (let c = 0; c < lc; c++) layer.push({ x: c + inset, y: r + inset, z });
     }
+    // centre-out so partially filled layers stay compact
+    const cx = (lc - 1) / 2 + inset;
+    const cy = (lr - 1) / 2 + inset;
+    layer.sort(
+      (a, b) => Math.hypot(a.x - cx, a.y - cy) - Math.hypot(b.x - cx, b.y - cy) || a.y - b.y,
+    );
+    layers.push(layer);
   }
-  // prefer higher layers first so stacks look pyramidal
-  slots.sort((a, b) => b.z - a.z || rand() - 0.5);
 
-  const chosen: typeof slots = [];
-  const perLayerTarget = Math.ceil(total / level.layers);
-  const counts = new Map<number, number>();
-  for (const s of slots) {
+  // Fill the base fully first, then stack upwards for a solid pyramid look.
+  const chosen: { x: number; y: number; z: number }[] = [];
+  for (const layer of layers) {
+    for (const slot of layer) {
+      if (chosen.length >= total) break;
+      chosen.push(slot);
+    }
     if (chosen.length >= total) break;
-    const c = counts.get(s.z) ?? 0;
-    if (c >= perLayerTarget) continue;
-    counts.set(s.z, c + 1);
-    chosen.push(s);
   }
-  let i = 0;
-  while (chosen.length < total && i < slots.length) {
-    if (!chosen.includes(slots[i]!)) chosen.push(slots[i]!);
-    i++;
-  }
+
 
   const frozenIdx = new Set<number>();
   const chainedIdx = new Set<number>();
