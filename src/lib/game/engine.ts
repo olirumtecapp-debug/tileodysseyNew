@@ -114,14 +114,14 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
 
   const frozenIdx = new Set<number>();
   const chainedIdx = new Set<number>();
-  while (frozenIdx.size < Math.min(level.obstacles.frozen, total))
-    frozenIdx.add(Math.floor(rand() * total));
-  while (chainedIdx.size < Math.min(level.obstacles.chained, total)) {
-    const k = Math.floor(rand() * total);
+  while (frozenIdx.size < Math.min(level.obstacles.frozen, fit))
+    frozenIdx.add(Math.floor(rand() * fit));
+  while (chainedIdx.size < Math.min(level.obstacles.chained, fit)) {
+    const k = Math.floor(rand() * fit);
     if (!frozenIdx.has(k)) chainedIdx.add(k);
   }
 
-  return chosen.slice(0, total).map((s, idx) => ({
+  return chosen.slice(0, fit).map((s, idx) => ({
     uid: idx + 1,
     symbolId: bag[idx]!,
     x: s.x,
