@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlayWorldIdLevelIndexRouteImport } from './routes/play.$worldId.$levelIndex'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlayWorldIdLevelIndexRoute = PlayWorldIdLevelIndexRouteImport.update({
+  id: '/play/$worldId/$levelIndex',
+  path: '/play/$worldId/$levelIndex',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/play/$worldId/$levelIndex': typeof PlayWorldIdLevelIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/play/$worldId/$levelIndex': typeof PlayWorldIdLevelIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/play/$worldId/$levelIndex': typeof PlayWorldIdLevelIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/play/$worldId/$levelIndex'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/play/$worldId/$levelIndex'
+  id: '__root__' | '/' | '/play/$worldId/$levelIndex'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PlayWorldIdLevelIndexRoute: typeof PlayWorldIdLevelIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/play/$worldId/$levelIndex': {
+      id: '/play/$worldId/$levelIndex'
+      path: '/play/$worldId/$levelIndex'
+      fullPath: '/play/$worldId/$levelIndex'
+      preLoaderRoute: typeof PlayWorldIdLevelIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PlayWorldIdLevelIndexRoute: PlayWorldIdLevelIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
