@@ -26,7 +26,7 @@ export function Board({
     const fit = () => {
       const w = el.clientWidth;
       const h = el.clientHeight || window.innerHeight * 0.5;
-      const next = Math.min(1.6, Math.max(0.42, Math.min(w / width, h / height)));
+      const next = Math.min(1.5, Math.max(0.42, Math.min(w / width, h / height)));
       setScale(Number.isFinite(next) ? next : 1);
     };
     fit();
@@ -44,7 +44,7 @@ export function Board({
   return (
     <div
       ref={wrapRef}
-      className={`flex min-h-0 w-full flex-1 items-center justify-center ${shaking ? "animate-shake" : ""}`}
+      className={`flex min-h-0 w-full flex-1 self-stretch items-center justify-center ${shaking ? "animate-shake" : ""}`}
     >
       <div style={{ width: width * scale, height: height * scale }}>
         <div
