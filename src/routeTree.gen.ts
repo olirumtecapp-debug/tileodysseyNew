@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlbumRouteImport } from './routes/album'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StoreRouteImport } from './routes/store'
+import { Route as PlayWorldIdLevelIndexRouteImport } from './routes/play.$worldId.$levelIndex'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlbumRoute = AlbumRouteImport.update({
+  id: '/album',
+  path: '/album',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoreRoute = StoreRouteImport.update({
+  id: '/store',
+  path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayWorldIdLevelIndexRoute = PlayWorldIdLevelIndexRouteImport.update({
+  id: '/play/$worldId/$levelIndex',
+  path: '/play/$worldId/$levelIndex',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/album': typeof AlbumRoute
+  '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/store': typeof StoreRoute
+  '/play/$worldId/$levelIndex': typeof PlayWorldIdLevelIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/album': typeof AlbumRoute
+  '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/store': typeof StoreRoute
+  '/play/$worldId/$levelIndex': typeof PlayWorldIdLevelIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/album': typeof AlbumRoute
+  '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/store': typeof StoreRoute
+  '/play/$worldId/$levelIndex': typeof PlayWorldIdLevelIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/album'
+    | '/map'
+    | '/profile'
+    | '/settings'
+    | '/store'
+    | '/play/$worldId/$levelIndex'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/album'
+    | '/map'
+    | '/profile'
+    | '/settings'
+    | '/store'
+    | '/play/$worldId/$levelIndex'
+  id:
+    | '__root__'
+    | '/'
+    | '/album'
+    | '/map'
+    | '/profile'
+    | '/settings'
+    | '/store'
+    | '/play/$worldId/$levelIndex'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlbumRoute: typeof AlbumRoute
+  MapRoute: typeof MapRoute
+  ProfileRoute: typeof ProfileRoute
+  SettingsRoute: typeof SettingsRoute
+  StoreRoute: typeof StoreRoute
+  PlayWorldIdLevelIndexRoute: typeof PlayWorldIdLevelIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +130,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/album': {
+      id: '/album'
+      path: '/album'
+      fullPath: '/album'
+      preLoaderRoute: typeof AlbumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/store': {
+      id: '/store'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play/$worldId/$levelIndex': {
+      id: '/play/$worldId/$levelIndex'
+      path: '/play/$worldId/$levelIndex'
+      fullPath: '/play/$worldId/$levelIndex'
+      preLoaderRoute: typeof PlayWorldIdLevelIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlbumRoute: AlbumRoute,
+  MapRoute: MapRoute,
+  ProfileRoute: ProfileRoute,
+  SettingsRoute: SettingsRoute,
+  StoreRoute: StoreRoute,
+  PlayWorldIdLevelIndexRoute: PlayWorldIdLevelIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
