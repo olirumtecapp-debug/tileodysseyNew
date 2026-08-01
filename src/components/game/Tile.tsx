@@ -28,7 +28,7 @@ export const Tile = memo(function Tile({
 }) {
   const sym = symbolById(tile.symbolId);
   const locked = covered || tile.frozen || tile.chained;
-  const [c1, c2] = PLATE[sym.category] ?? PLATE.Frutas!;
+  const [c1, c2] = PLATE[sym.category] ?? ["#fffdf6", "#ffe9c9"];
 
   return (
     <button
