@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { useSave, levelFromXp, xpForLevel, totalStars } from "@/lib/game/save";
 import { GameButton } from "./GameButton";
+import { FullscreenButton } from "./DeviceButtons";
+import { SupportDialog } from "./SupportDialog";
 
 export function CurrencyPill({ icon, value }: { icon: string; value: number | string }) {
   return (
@@ -52,6 +54,8 @@ export function Header({ title, back }: { title?: string; back?: string }) {
           <CurrencyPill icon="⭐" value={totalStars(save)} />
           <CurrencyPill icon="🪙" value={save.coins} />
           <CurrencyPill icon="💎" value={save.gems} />
+          <FullscreenButton />
+          <SupportDialog />
         </div>
       </div>
     </header>
