@@ -76,15 +76,24 @@ export function generateBoard(level: LevelConfig, salt = 0): Tile[] {
     layers.push(layer);
   }
 
-  // Fill the base fully first, then stack upwards for a solid pyramid look.
+  // Spread tiles across layers proportionally so the stack looks like a pyramid.
+  const slotTotal = layers.reduce((a, l) => a + l.length, 0);
   const chosen: { x: number; y: number; z: number }[] = [];
+  layers.forEach((layer, i) => {
+    const quota =
+      i === layers.length - 1
+        ? total - chosen.length
+        : Math.min(layer.length, Math.round((total * layer.length) / slotTotal));
+    chosen.push(...layer.slice(0, Math.max(0, quota)));
+  });
+  // top-up from the base if rounding left us short
   for (const layer of layers) {
     for (const slot of layer) {
       if (chosen.length >= total) break;
-      chosen.push(slot);
+      if (!chosen.includes(slot)) chosen.push(slot);
     }
-    if (chosen.length >= total) break;
   }
+
 
 
   const frozenIdx = new Set<number>();
