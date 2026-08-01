@@ -18,25 +18,28 @@ export function Board({
 
   return (
     <div className={`flex w-full justify-center ${shaking ? "animate-shake" : ""}`}>
-      <div
-        className="relative origin-top scale-[min(1,calc((100vw-2rem)/380))] sm:scale-100"
-        style={{ width, height }}
-      >
-        {tiles.map((t) => (
-          <Tile
-            key={t.uid}
-            tile={t}
-            covered={isCovered(t, tiles)}
-            colorblind={colorblind}
-            onSelect={onSelect}
-          />
-        ))}
-        {tiles.length === 0 && (
-          <div className="grid h-full place-items-center font-display text-xl text-foreground/60">
-            Tabuleiro limpo!
-          </div>
-        )}
+      <div className="rounded-4xl glass p-4 shadow-soft">
+        <div
+          className="relative origin-top scale-[min(1,calc((100vw-4rem)/380))] sm:scale-100"
+          style={{ width, height }}
+        >
+          {tiles.map((t) => (
+            <Tile
+              key={t.uid}
+              tile={t}
+              covered={isCovered(t, tiles)}
+              colorblind={colorblind}
+              onSelect={onSelect}
+            />
+          ))}
+          {tiles.length === 0 && (
+            <div className="grid h-full place-items-center font-display text-xl text-foreground/60">
+              Tabuleiro limpo!
+            </div>
+          )}
+        </div>
       </div>
     </div>
+
   );
 }
