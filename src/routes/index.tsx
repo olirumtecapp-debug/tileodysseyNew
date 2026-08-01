@@ -5,6 +5,9 @@ import { GameButton } from "@/components/game/GameButton";
 import { Mascot } from "@/components/game/Mascot";
 import { useSave, levelFromXp, totalStars } from "@/lib/game/save";
 import { WORLDS } from "@/lib/game/data";
+import { FullscreenButton, InstallButton } from "@/components/game/DeviceButtons";
+import { SupportDialog } from "@/components/game/SupportDialog";
+import { GAME_URL } from "./instalar";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -119,7 +122,35 @@ function Home() {
           <Tile2 to="/profile" icon="🦊" label="Perfil" hint={`Nível ${levelFromXp(save.xp)}`} />
           <Tile2 to="/settings" icon="⚙️" label="Ajustes" hint="Acessibilidade" />
           <Tile2 to="/album" icon="🏆" label="Conquistas" hint="Coleções" />
+          <Tile2 to="/instalar" icon="📲" label="Instalar app" hint="Celular e PC" />
         </nav>
+
+        <section className="mt-4 rounded-3xl glass p-4 text-center shadow-soft">
+          <h2 className="font-display text-lg font-black">
+            Jogue no celular 📱 e no PC 💻
+          </h2>
+          <p className="mx-auto mt-1 max-w-md text-sm font-semibold text-muted-foreground">
+            Funciona no navegador de qualquer aparelho. No computador, acesse{" "}
+            <a href={GAME_URL} className="font-black text-turquoise underline">
+              {GAME_URL.replace("https://", "")}
+            </a>{" "}
+            — e dá para instalar como app com ícone próprio.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+            <InstallButton />
+            <FullscreenButton label />
+            <GameButton asChild variant="soft" size="md">
+              <Link to="/instalar">Como instalar</Link>
+            </GameButton>
+            <SupportDialog
+              trigger={
+                <GameButton variant="coral" size="md">
+                  ❤️ Apoiar o projeto
+                </GameButton>
+              }
+            />
+          </div>
+        </section>
       </main>
     </AppFrame>
   );

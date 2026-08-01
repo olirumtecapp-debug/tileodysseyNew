@@ -1,0 +1,25 @@
+{
+  "name": "Tile Odyssey — Aventura de peças",
+  "short_name": "Tile Odyssey",
+  "description": "Combine trios de peças em 12 ilhas mágicas com o Tilo, a raposa exploradora.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#d9f6ff",
+  "theme_color": "#8fd8ff",
+  "icons": [
+    {
+      "src": "/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
