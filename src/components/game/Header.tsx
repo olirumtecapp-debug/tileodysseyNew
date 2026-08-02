@@ -50,13 +50,13 @@ export function Header({ title, back }: { title?: string; back?: string }) {
             </div>
           </div>
         </div>
-        <div className="flex shrink-0 items-center justify-end gap-1.5 sm:gap-2">
+        <div className="flex flex-1 items-center justify-end gap-1.5 sm:gap-2">
           <CurrencyPill icon="⭐" value={totalStars(save)} />
           <CurrencyPill icon="🪙" value={save.coins} />
           <div className="hidden sm:flex items-center gap-1.5 sm:gap-2">
             <CurrencyPill icon="💎" value={save.gems} />
           </div>
-          <div className="ml-1.5 flex items-center gap-1 sm:ml-2 sm:gap-1.5">
+          <div className="ml-auto flex items-center gap-1 sm:ml-2 sm:gap-1.5">
             <FullscreenButton />
             <SupportDialog />
           </div>
