@@ -136,12 +136,14 @@ function Home() {
             </a>{" "}
             — e dá para instalar como app com ícone próprio.
           </p>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
             <InstallButton />
-            <FullscreenButton label />
-            <GameButton asChild variant="soft" size="md">
-              <Link to="/instalar">Como instalar</Link>
-            </GameButton>
+            <div className="flex items-center gap-2">
+              <FullscreenButton label />
+              <GameButton asChild variant="soft" size="md">
+                <Link to="/instalar">Como instalar</Link>
+              </GameButton>
+            </div>
             <SupportDialog
               trigger={
                 <GameButton variant="coral" size="md">
