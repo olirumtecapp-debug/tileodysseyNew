@@ -182,7 +182,7 @@ function Tile2({
   return (
     <Link
       to={to}
-      className="group flex items-center gap-3 rounded-3xl glass p-4 shadow-soft transition-transform duration-200 hover:-translate-y-1"
+      className="group flex items-center gap-3 rounded-[2rem] border-2 border-white/60 bg-white/40 p-4 shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-pop hover:bg-white/60"
     >
       <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gold/25 text-2xl">
         {icon}
