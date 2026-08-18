@@ -311,7 +311,7 @@ function PlayPage() {
   return (
     <AppFrame sky={world.sky} ground={world.ground} accent={world.accent}>
       <div className="mx-auto flex min-h-dvh max-w-3xl flex-col gap-3 px-3 py-3">
-        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-3xl glass px-3 py-2 shadow-soft">
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-[2rem] border-2 border-white/50 bg-white/40 px-4 py-3 shadow-soft backdrop-blur-md">
           <GameButton asChild variant="soft" size="icon" aria-label="Voltar ao mapa">
             <Link to="/map">←</Link>
           </GameButton>
