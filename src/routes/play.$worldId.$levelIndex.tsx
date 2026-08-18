@@ -334,7 +334,7 @@ function PlayPage() {
           </div>
         </div>
 
-        <div className="h-2 overflow-hidden rounded-full bg-foreground/10">
+        <div className="h-3 overflow-hidden rounded-full border border-white/30 bg-white/20 shadow-inner backdrop-blur-sm">
           <div
             className="h-full rounded-full bg-emerald transition-all duration-500"
             style={{ width: `${Math.min(100, (objDone / objTotal) * 100)}%` }}
