@@ -10,6 +10,7 @@ export function FullscreenButton({ label = false, className }: { label?: boolean
     <GameButton
       variant="soft"
       size={label ? "md" : "icon"}
+      className={className}
       onClick={toggle}
       aria-label={isFullscreen ? "Sair da tela cheia" : "Tela cheia"}
       title={isFullscreen ? "Sair da tela cheia" : "Tela cheia"}
