@@ -360,7 +360,7 @@ function PlayPage() {
           <Tray items={tray} clearing={clearing} />
           <PowerUpBar charges={charges} onUse={usePower} disabled={status !== "playing"} />
           {level.objective.symbolId && (
-            <div className="mx-auto flex items-center gap-2 rounded-full glass px-4 py-1.5 text-sm font-bold shadow-soft">
+            <div className="mx-auto flex items-center gap-2 rounded-full border border-white/40 bg-white/30 px-4 py-2 text-sm font-bold shadow-soft backdrop-blur-sm">
               <span>Objetivo:</span>
               <span className="text-lg">{symbolById(level.objective.symbolId).glyph}</span>
               <span className="tabular-nums">
