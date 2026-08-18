@@ -125,7 +125,7 @@ function Home() {
           <Tile2 to="/instalar" icon="📲" label="Instalar app" hint="Celular e PC" />
         </nav>
 
-        <section className="mt-4 rounded-3xl glass p-4 text-center shadow-soft">
+        <section className="mt-6 rounded-4xl border-2 border-white/50 bg-white/40 p-6 text-center shadow-soft backdrop-blur-md">
           <h2 className="font-display text-lg font-black">
             Jogue no celular 📱 e no PC 💻
           </h2>
