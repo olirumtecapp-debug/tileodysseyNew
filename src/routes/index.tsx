@@ -160,7 +160,7 @@ function Home() {
 
 function Kpi({ icon, value, label }: { icon: string; value: number; label: string }) {
   return (
-    <div className="rounded-3xl glass p-3 text-center shadow-soft">
+    <div className="rounded-[2rem] border-2 border-white/50 bg-white/40 p-4 text-center shadow-soft backdrop-blur-sm transition-transform hover:scale-105">
       <p className="text-2xl">{icon}</p>
       <p className="font-display text-2xl font-black tabular-nums">{value}</p>
       <p className="text-[11px] font-bold text-muted-foreground">{label}</p>
