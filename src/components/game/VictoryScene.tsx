@@ -109,7 +109,7 @@ export function VictoryScene({
 
 function Stat({ icon, label, value }: { icon: string; label: string; value: number }) {
   return (
-    <div className="rounded-2xl bg-card/70 p-2">
+    <div className="rounded-3xl border border-white/60 bg-white/50 p-3 shadow-sm">
       <p className="text-lg">{icon}</p>
       <p className="font-display text-lg font-black tabular-nums">{value}</p>
       <p className="text-[11px] font-semibold text-muted-foreground">{label}</p>
