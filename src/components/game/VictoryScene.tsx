@@ -83,7 +83,7 @@ export function VictoryScene({
         )}
         <div className="mt-5 flex flex-col gap-2">
           {nextTo ? (
-            <GameButton asChild variant="gold" size="lg" className="animate-glow-pulse">
+            <GameButton asChild variant="gold" size="lg" className="border-b-8 border-gold-foreground/20 shadow-pop animate-glow-pulse">
               <Link to="/play/$worldId/$levelIndex" params={nextTo}>
                 Próxima fase →
               </Link>
