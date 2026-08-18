@@ -31,7 +31,7 @@ export function DefeatScene({ reason, onRetry }: { reason: string; onRetry: () =
           <p className="mt-1 text-sm font-semibold">{tip}</p>
         </div>
         <div className="mt-5 flex flex-col gap-2">
-          <GameButton variant="turquoise" size="lg" onClick={onRetry}>
+          <GameButton variant="turquoise" size="lg" onClick={onRetry} className="border-b-8 border-turquoise-foreground/20 shadow-pop">
             Tentar de novo
           </GameButton>
           <GameButton asChild variant="soft" size="md">
