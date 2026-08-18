@@ -93,7 +93,7 @@ function Home() {
           <Kpi icon="🔥" value={save.streak.count} label="Dias seguidos" />
         </section>
 
-        <section className="mt-4 rounded-3xl glass p-4 shadow-soft">
+        <section className="mt-6 rounded-4xl border-2 border-white/50 bg-white/40 p-5 shadow-soft backdrop-blur-md">
           <h2 className="font-display text-lg font-black">Missões diárias</h2>
           <ul className="mt-2 space-y-2">
             {missions.map((m) => (
