@@ -18,7 +18,7 @@ export function Tray({ items, clearing }: { items: Tile[]; clearing: number[] })
         return (
           <div
             key={i}
-            className="grid h-11 w-11 place-items-center rounded-xl bg-foreground/5 ring-1 ring-inset ring-white/40 sm:h-12 sm:w-12"
+            className="grid h-11 w-11 place-items-center rounded-2xl bg-white/30 border border-white/40 shadow-inner sm:h-12 sm:w-12"
           >
             {tile && (
               <span
