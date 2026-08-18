@@ -62,10 +62,7 @@ export function SupportDialog({
 
         <div className="rounded-2xl bg-foreground/5 p-3 text-sm font-bold">
           <p>
-            Banco: <span className="text-muted-foreground">C6</span>
-          </p>
-          <p>
-            Favorecido: <span className="text-muted-foreground">Murilo Ferreira da Silva</span>
+            Favorecido: <span className="text-muted-foreground">MURILO SILVA - PIJ</span>
           </p>
         </div>
 
