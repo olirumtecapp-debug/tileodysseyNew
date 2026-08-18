@@ -50,9 +50,9 @@ export function VictoryScene({
   }, [xp]);
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/45 px-4 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 px-4 backdrop-blur-md">
       <Confetti />
-      <div className="relative w-full max-w-md overflow-hidden rounded-4xl glass p-6 text-center shadow-soft animate-pop-in">
+      <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] border-4 border-white/50 bg-white/90 p-8 text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-pop-in">
         <Fireworks />
         <h2 className="font-display text-3xl font-black text-emerald text-stroke">Fase Concluída!</h2>
         <div className="mt-3 flex justify-center gap-2">
