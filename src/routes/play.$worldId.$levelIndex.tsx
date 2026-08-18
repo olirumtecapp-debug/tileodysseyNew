@@ -311,7 +311,7 @@ function PlayPage() {
   return (
     <AppFrame sky={world.sky} ground={world.ground} accent={world.accent}>
       <div className="mx-auto flex min-h-dvh max-w-3xl flex-col gap-3 px-3 py-3">
-        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-3xl glass px-3 py-2 shadow-soft">
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-[2rem] border-2 border-white/50 bg-white/40 px-4 py-3 shadow-soft backdrop-blur-md">
           <GameButton asChild variant="soft" size="icon" aria-label="Voltar ao mapa">
             <Link to="/map">←</Link>
           </GameButton>
@@ -334,7 +334,7 @@ function PlayPage() {
           </div>
         </div>
 
-        <div className="h-2 overflow-hidden rounded-full bg-foreground/10">
+        <div className="h-3 overflow-hidden rounded-full border border-white/30 bg-white/20 shadow-inner backdrop-blur-sm">
           <div
             className="h-full rounded-full bg-emerald transition-all duration-500"
             style={{ width: `${Math.min(100, (objDone / objTotal) * 100)}%` }}
@@ -360,7 +360,7 @@ function PlayPage() {
           <Tray items={tray} clearing={clearing} />
           <PowerUpBar charges={charges} onUse={usePower} disabled={status !== "playing"} />
           {level.objective.symbolId && (
-            <div className="mx-auto flex items-center gap-2 rounded-full glass px-4 py-1.5 text-sm font-bold shadow-soft">
+            <div className="mx-auto flex items-center gap-2 rounded-full border border-white/40 bg-white/30 px-4 py-2 text-sm font-bold shadow-soft backdrop-blur-sm">
               <span>Objetivo:</span>
               <span className="text-lg">{symbolById(level.objective.symbolId).glyph}</span>
               <span className="tabular-nums">

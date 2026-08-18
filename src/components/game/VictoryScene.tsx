@@ -50,9 +50,9 @@ export function VictoryScene({
   }, [xp]);
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/45 px-4 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 px-4 backdrop-blur-md">
       <Confetti />
-      <div className="relative w-full max-w-md overflow-hidden rounded-4xl glass p-6 text-center shadow-soft animate-pop-in">
+      <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] border-4 border-white/50 bg-white/90 p-8 text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-pop-in">
         <Fireworks />
         <h2 className="font-display text-3xl font-black text-emerald text-stroke">Fase Concluída!</h2>
         <div className="mt-3 flex justify-center gap-2">
@@ -83,7 +83,7 @@ export function VictoryScene({
         )}
         <div className="mt-5 flex flex-col gap-2">
           {nextTo ? (
-            <GameButton asChild variant="gold" size="lg" className="animate-glow-pulse">
+            <GameButton asChild variant="gold" size="lg" className="border-b-8 border-gold-foreground/20 shadow-pop animate-glow-pulse">
               <Link to="/play/$worldId/$levelIndex" params={nextTo}>
                 Próxima fase →
               </Link>
@@ -109,7 +109,7 @@ export function VictoryScene({
 
 function Stat({ icon, label, value }: { icon: string; label: string; value: number }) {
   return (
-    <div className="rounded-2xl bg-card/70 p-2">
+    <div className="rounded-3xl border border-white/60 bg-white/50 p-3 shadow-sm">
       <p className="text-lg">{icon}</p>
       <p className="font-display text-lg font-black tabular-nums">{value}</p>
       <p className="text-[11px] font-semibold text-muted-foreground">{label}</p>

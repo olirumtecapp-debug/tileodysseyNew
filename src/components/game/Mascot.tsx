@@ -37,22 +37,30 @@ export function Mascot({
         <defs>
           <linearGradient id="tiloFur" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#e8722c" />
+            <stop offset="60%" stopColor="#d15a1b" />
             <stop offset="100%" stopColor="#b8471a" />
           </linearGradient>
           <linearGradient id="tiloCoat" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#2c6f5e" />
             <stop offset="100%" stopColor="#17453c" />
           </linearGradient>
+          <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#fff" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+          </radialGradient>
         </defs>
 
         <ellipse cx="50" cy="95" rx="24" ry="4" fill="rgba(0,0,0,.22)" />
 
-        {/* tail — long and sharp */}
+        {/* tail — long and sharp with texture */}
         <path d="M70 78 q24 2 20 -20 q-4 16 -22 12z" fill="url(#tiloFur)" />
+        <path d="M70 78 q24 2 20 -20 q-4 16 -22 12z" fill="url(#eyeGlow)" opacity="0.1" />
         <path d="M86 60 q6 5 3 12 q-6 -3 -7 -9z" fill="#f4d7bb" />
 
         {/* torso in an explorer coat */}
         <path d="M34 92 q-2 -24 16 -28 q18 4 16 28z" fill="url(#tiloCoat)" />
+        {/* fabric texture lines */}
+        <path d="M38 75 q12 -2 24 0" stroke="rgba(255,255,255,0.05)" fill="none" strokeWidth="1" />
         <path d="M50 64 l7 6 l-7 22 l-7 -22z" fill="#0f342d" />
         <rect x="34" y="80" width="32" height="5" rx="2.5" fill="#3c2a20" />
         <rect x="47" y="79" width="6" height="7" rx="1.5" fill="#c9a44c" />
@@ -60,16 +68,23 @@ export function Mascot({
         {/* neck / shoulders */}
         <path d="M42 62 q8 5 16 0 l2 5 q-10 6 -20 0z" fill="#14403a" />
 
-        {/* ears — tall and angular */}
+        {/* ears — tall and angular with inner depth */}
         <path d="M27 36 L30 10 L47 26z" fill="url(#tiloFur)" />
         <path d="M73 36 L70 10 L53 26z" fill="url(#tiloFur)" />
-        <path d="M31 33 L33 18 L43 27z" fill="#3a241c" opacity=".55" />
-        <path d="M69 33 L67 18 L57 27z" fill="#3a241c" opacity=".55" />
+        <path d="M31 33 L33 18 L43 27z" fill="#3a241c" opacity=".45" />
+        <path d="M69 33 L67 18 L57 27z" fill="#3a241c" opacity=".45" />
 
-        {/* head — narrow, angular muzzle */}
+        {/* head — narrow, angular muzzle with highlights */}
         <path
           d="M50 20 q22 3 24 22 q2 18 -12 26 q-12 8 -24 0 q-14 -8 -12 -26 q2 -19 24 -22z"
           fill="url(#tiloFur)"
+        />
+        <path
+          d="M35 25 q15 -8 30 0"
+          fill="none"
+          stroke="white"
+          strokeWidth="0.5"
+          opacity="0.1"
         />
         <path d="M50 44 q14 4 12 14 q-12 12 -24 0 q-2 -10 12 -14z" fill="#f7e2cd" />
 
@@ -77,9 +92,11 @@ export function Mascot({
         <path d="M26 44 l-8 5 l9 3z" fill="#c85a22" />
         <path d="M74 44 l8 5 l-9 3z" fill="#c85a22" />
 
-        {/* hat — worn wide-brim explorer hat */}
+        {/* hat — worn wide-brim explorer hat with detail */}
         <path d="M14 30 q36 -12 72 0 q-36 8 -72 0z" fill="#4a3626" />
         <path d="M30 29 q4 -16 20 -16 q16 0 20 16 q-20 -7 -40 0z" fill="#6b4d34" />
+        {/* stitching */}
+        <path d="M35 18 q15 -5 30 0" fill="none" stroke="rgba(0,0,0,0.2)" strokeWidth="0.8" strokeDasharray="2 2" />
         <path d="M29 28 q21 -6 42 0 l0 3 q-21 -5 -42 0z" fill="#c9a44c" />
 
         {/* brows */}
@@ -96,14 +113,17 @@ export function Mascot({
           strokeLinecap="round"
         />
 
-        {/* eyes — narrower, confident */}
+        {/* eyes — narrower, confident with specular highlights */}
         <g className={mood === "sad" ? "" : "animate-blink"}>
           <path d={`M35 ${43 + browY} q6 -5 12 0 q-6 5 -12 0z`} fill="#fff" />
           <path d={`M53 ${43 + browY} q6 -5 12 0 q-6 5 -12 0z`} fill="#fff" />
-          <circle cx="41.5" cy={43 + browY} r="2.6" fill="#2a1b14" />
-          <circle cx="59.5" cy={43 + browY} r="2.6" fill="#2a1b14" />
-          <circle cx="42.5" cy={42 + browY} r=".9" fill="#fff" />
-          <circle cx="60.5" cy={42 + browY} r=".9" fill="#fff" />
+          <circle cx="41.5" cy={43 + browY} r="2.8" fill="#2a1b14" />
+          <circle cx="59.5" cy={43 + browY} r="2.8" fill="#2a1b14" />
+          {/* specular glint */}
+          <circle cx="42.5" cy={41.5 + browY} r="1.1" fill="#fff" />
+          <circle cx="60.5" cy={41.5 + browY} r="1.1" fill="#fff" />
+          <circle cx="40" cy={44 + browY} r="0.5" fill="#fff" opacity="0.6" />
+          <circle cx="58" cy={44 + browY} r="0.5" fill="#fff" opacity="0.6" />
         </g>
 
         {/* nose + mouth */}

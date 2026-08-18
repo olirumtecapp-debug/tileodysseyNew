@@ -32,9 +32,10 @@ export function AppFrame({
 
   return (
     <div
-      className={`min-h-dvh ${settings.leftHanded ? "[--hand:row-reverse]" : "[--hand:row]"}`}
+      className={`relative min-h-dvh overflow-x-hidden ${settings.leftHanded ? "[--hand:row-reverse]" : "[--hand:row]"}`}
       data-colorblind={settings.colorblind ? "true" : undefined}
     >
+      <div className="fixed inset-0 pointer-events-none bg-radial-[circle_at_50%_0%] from-white/10 to-transparent z-10" />
       <Scenery sky={sky} ground={ground} accent={accent} />
       {children}
     </div>

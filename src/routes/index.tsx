@@ -57,13 +57,13 @@ function Home() {
       <Header />
       <main className="mx-auto w-full max-w-3xl px-4 pb-16 pt-4">
         <section className="relative overflow-hidden rounded-4xl glass p-6 text-center shadow-soft">
-          <p className="font-display text-sm font-black uppercase tracking-[0.3em] text-turquoise">
+          <p className="font-display text-sm font-black uppercase tracking-[0.3em] text-turquoise filter drop-shadow-sm">
             Aventura de peças
           </p>
-          <h1 className="mt-1 font-display text-5xl font-black text-emerald text-stroke sm:text-6xl">
+          <h1 className="mt-2 font-display text-6xl font-black text-emerald filter drop-shadow-[0_4px_0_rgba(0,0,0,0.15)] sm:text-7xl">
             Tile Odyssey
           </h1>
-          <p className="mx-auto mt-2 max-w-sm text-sm font-semibold text-muted-foreground">
+          <p className="mx-auto mt-3 max-w-sm text-base font-semibold text-muted-foreground">
             Ajude o Tilo a explorar 12 ilhas mágicas combinando trios de peças.
           </p>
           <div className="mt-2 flex justify-center animate-float-soft">
@@ -73,7 +73,7 @@ function Home() {
             asChild
             variant="gold"
             size="xl"
-            className="mt-2 w-full max-w-xs animate-glow-pulse"
+            className="mt-4 w-full max-w-xs scale-110 border-b-8 border-gold-foreground/20 shadow-pop animate-glow-pulse"
           >
             <Link
               to="/play/$worldId/$levelIndex"
@@ -93,7 +93,7 @@ function Home() {
           <Kpi icon="🔥" value={save.streak.count} label="Dias seguidos" />
         </section>
 
-        <section className="mt-4 rounded-3xl glass p-4 shadow-soft">
+        <section className="mt-6 rounded-4xl border-2 border-white/50 bg-white/40 p-5 shadow-soft backdrop-blur-md">
           <h2 className="font-display text-lg font-black">Missões diárias</h2>
           <ul className="mt-2 space-y-2">
             {missions.map((m) => (
@@ -115,7 +115,7 @@ function Home() {
           </ul>
         </section>
 
-        <nav className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <nav className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
           <Tile2 to="/map" icon="🗺️" label="Mapa" hint="12 mundos" />
           <Tile2 to="/album" icon="📖" label="Álbum" hint={`${save.discovered.length} descobertas`} />
           <Tile2 to="/store" icon="🛍️" label="Loja" hint="Cosméticos" />
@@ -125,7 +125,7 @@ function Home() {
           <Tile2 to="/instalar" icon="📲" label="Instalar app" hint="Celular e PC" />
         </nav>
 
-        <section className="mt-4 rounded-3xl glass p-4 text-center shadow-soft">
+        <section className="mt-6 rounded-4xl border-2 border-white/50 bg-white/40 p-6 text-center shadow-soft backdrop-blur-md">
           <h2 className="font-display text-lg font-black">
             Jogue no celular 📱 e no PC 💻
           </h2>
@@ -160,7 +160,7 @@ function Home() {
 
 function Kpi({ icon, value, label }: { icon: string; value: number; label: string }) {
   return (
-    <div className="rounded-3xl glass p-3 text-center shadow-soft">
+    <div className="rounded-[2rem] border-2 border-white/50 bg-white/40 p-4 text-center shadow-soft backdrop-blur-sm transition-transform hover:scale-105">
       <p className="text-2xl">{icon}</p>
       <p className="font-display text-2xl font-black tabular-nums">{value}</p>
       <p className="text-[11px] font-bold text-muted-foreground">{label}</p>
@@ -182,7 +182,7 @@ function Tile2({
   return (
     <Link
       to={to}
-      className="group flex items-center gap-3 rounded-3xl glass p-4 shadow-soft transition-transform duration-200 hover:-translate-y-1"
+      className="group flex items-center gap-3 rounded-[2rem] border-2 border-white/60 bg-white/40 p-4 shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-pop hover:bg-white/60"
     >
       <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gold/25 text-2xl">
         {icon}

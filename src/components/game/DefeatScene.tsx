@@ -19,8 +19,8 @@ export function DefeatScene({ reason, onRetry }: { reason: string; onRetry: () =
   const tip = TIPS[Math.floor(Math.random() * TIPS.length)]!;
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/45 px-4 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-4xl glass p-6 text-center shadow-soft animate-pop-in">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 px-4 backdrop-blur-md">
+      <div className="w-full max-w-md rounded-[2.5rem] border-4 border-white/50 bg-white/90 p-8 text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] animate-pop-in">
         <h2 className="font-display text-3xl font-black text-coral">Quase lá!</h2>
         <p className="mt-1 text-sm font-semibold text-muted-foreground">{reason}</p>
         <div className="mt-2 flex justify-center">
@@ -31,7 +31,7 @@ export function DefeatScene({ reason, onRetry }: { reason: string; onRetry: () =
           <p className="mt-1 text-sm font-semibold">{tip}</p>
         </div>
         <div className="mt-5 flex flex-col gap-2">
-          <GameButton variant="turquoise" size="lg" onClick={onRetry}>
+          <GameButton variant="turquoise" size="lg" onClick={onRetry} className="border-b-8 border-turquoise-foreground/20 shadow-pop">
             Tentar de novo
           </GameButton>
           <GameButton asChild variant="soft" size="md">

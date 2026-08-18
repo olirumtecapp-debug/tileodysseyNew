@@ -30,7 +30,7 @@ export function PowerUpBar({
           title={`${p.name} — ${p.hint}`}
           aria-label={`${p.name}: ${p.hint}`}
           className={cn(
-            "relative grid h-14 w-14 place-items-center rounded-2xl glass shadow-soft transition-all active:translate-y-0.5",
+            "relative grid h-14 w-14 place-items-center rounded-2xl border-2 border-white/60 bg-white/40 shadow-soft backdrop-blur-sm transition-all active:translate-y-1.5 active:shadow-none",
             charges[p.id] > 0 ? "hover:-translate-y-0.5 hover:brightness-105" : "opacity-40",
           )}
         >

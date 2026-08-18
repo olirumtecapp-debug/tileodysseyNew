@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { AudioManager } from "@/lib/game/audio";
 
 const gameButton = cva(
-  "relative inline-flex select-none items-center justify-center gap-2 rounded-2xl font-display font-extrabold tracking-wide transition-all duration-150 active:translate-y-1 active:shadow-none disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/50",
+  "relative inline-flex select-none items-center justify-center gap-2 rounded-2xl font-display font-black tracking-wide transition-all duration-200 active:translate-y-1.5 active:shadow-none disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/50",
   {
     variants: {
       variant: {
