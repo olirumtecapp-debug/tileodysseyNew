@@ -3,7 +3,7 @@ import { Maximize, Minimize, Download, Check } from "lucide-react";
 import { GameButton } from "./GameButton";
 import { useFullscreen, useInstallPrompt } from "@/lib/pwa";
 
-export function FullscreenButton({ label = false }: { label?: boolean }) {
+export function FullscreenButton({ label = false, className }: { label?: boolean; className?: string }) {
   const { isFullscreen, supported, toggle } = useFullscreen();
   if (!supported) return null;
   return (
