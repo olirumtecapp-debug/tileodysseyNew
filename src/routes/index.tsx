@@ -115,7 +115,7 @@ function Home() {
           </ul>
         </section>
 
-        <nav className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <nav className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
           <Tile2 to="/map" icon="🗺️" label="Mapa" hint="12 mundos" />
           <Tile2 to="/album" icon="📖" label="Álbum" hint={`${save.discovered.length} descobertas`} />
           <Tile2 to="/store" icon="🛍️" label="Loja" hint="Cosméticos" />
