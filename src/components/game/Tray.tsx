@@ -9,8 +9,8 @@ export function Tray({ items, clearing }: { items: Tile[]; clearing: number[] })
 
   return (
     <div
-      className={`mx-auto flex w-fit max-w-full items-center gap-1 rounded-3xl px-2 py-2 shadow-soft transition-colors duration-300 ${
-        danger ? "bg-coral/25 ring-2 ring-coral" : "glass"
+      className={`mx-auto flex w-fit max-w-full items-center gap-1 rounded-[2rem] border-2 px-2 py-2 shadow-soft transition-colors duration-300 backdrop-blur-md ${
+        danger ? "border-coral bg-coral/30 ring-4 ring-coral/20" : "border-white/50 bg-white/40"
       }`}
     >
       {slots.map((_, i) => {
