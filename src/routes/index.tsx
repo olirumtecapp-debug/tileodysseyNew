@@ -73,7 +73,7 @@ function Home() {
             asChild
             variant="gold"
             size="xl"
-            className="mt-2 w-full max-w-xs animate-glow-pulse"
+            className="mt-4 w-full max-w-xs scale-110 border-b-8 border-gold-foreground/20 shadow-pop animate-glow-pulse"
           >
             <Link
               to="/play/$worldId/$levelIndex"
