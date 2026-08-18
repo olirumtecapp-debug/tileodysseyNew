@@ -57,13 +57,13 @@ function Home() {
       <Header />
       <main className="mx-auto w-full max-w-3xl px-4 pb-16 pt-4">
         <section className="relative overflow-hidden rounded-4xl glass p-6 text-center shadow-soft">
-          <p className="font-display text-sm font-black uppercase tracking-[0.3em] text-turquoise">
+          <p className="font-display text-sm font-black uppercase tracking-[0.3em] text-turquoise filter drop-shadow-sm">
             Aventura de peças
           </p>
-          <h1 className="mt-1 font-display text-5xl font-black text-emerald text-stroke sm:text-6xl">
+          <h1 className="mt-2 font-display text-6xl font-black text-emerald filter drop-shadow-[0_4px_0_rgba(0,0,0,0.15)] sm:text-7xl">
             Tile Odyssey
           </h1>
-          <p className="mx-auto mt-2 max-w-sm text-sm font-semibold text-muted-foreground">
+          <p className="mx-auto mt-3 max-w-sm text-base font-semibold text-muted-foreground">
             Ajude o Tilo a explorar 12 ilhas mágicas combinando trios de peças.
           </p>
           <div className="mt-2 flex justify-center animate-float-soft">
