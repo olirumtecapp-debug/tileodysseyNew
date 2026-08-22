@@ -125,32 +125,12 @@ function Home() {
           <Tile2 to="/instalar" icon="📲" label="Instalar app" hint="Celular e PC" />
         </nav>
 
-        <section className="mt-6 rounded-4xl border-2 border-white/50 bg-white/40 p-6 text-center shadow-soft backdrop-blur-md">
-          <h2 className="font-display text-lg font-black">
-            Jogue no celular 📱 e no PC 💻
-          </h2>
-          <p className="mx-auto mt-1 max-w-md text-sm font-semibold text-muted-foreground">
-            Funciona no navegador de qualquer aparelho. No computador, acesse{" "}
-            <a href={GAME_URL} className="font-black text-turquoise underline">
-              {GAME_URL.replace("https://", "")}
-            </a>{" "}
-            — e dá para instalar como app com ícone próprio.
+        <section className="mt-8 rounded-4xl border-2 border-white/50 bg-white/40 p-6 text-center shadow-soft backdrop-blur-md">
+          <p className="text-sm font-bold text-muted-foreground">
+            Tile Odyssey · Aventura de Combinação de Peças
           </p>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-            <InstallButton />
-            <div className="flex items-center gap-2">
-              <FullscreenButton label />
-              <GameButton asChild variant="soft" size="md">
-                <Link to="/instalar">Como instalar</Link>
-              </GameButton>
-            </div>
-            <SupportDialog
-              trigger={
-                <GameButton variant="coral" size="md">
-                  ❤️ Apoiar o projeto
-                </GameButton>
-              }
-            />
+          <div className="mt-3 flex justify-center">
+            <FullscreenButton label />
           </div>
         </section>
       </main>

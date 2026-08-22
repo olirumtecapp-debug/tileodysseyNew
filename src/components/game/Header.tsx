@@ -79,7 +79,7 @@ export function Header({ title, back }: { title?: string; back?: string }) {
           
           <div className="ml-auto flex items-center gap-1.5 sm:ml-4 sm:gap-3">
             <FullscreenButton className="shadow-soft hover:shadow-pop transition-all" />
-            <SupportDialog />
+            
           </div>
         </div>
       </div>
